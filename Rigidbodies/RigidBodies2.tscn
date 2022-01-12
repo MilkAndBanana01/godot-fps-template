@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Materials/RigidBody Material.tres" type="Material" id=1]
+[ext_resource path="res://Rigidbodies/RigidBodyReset.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=10]
+
+[sub_resource type="CubeMesh" id=11]
+
+[node name="Rigid Bodies" type="Spatial"]
+
+[node name="Large" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
+can_sleep = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Large"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Large/CollisionShape"]
+mesh = SubResource( 11 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 1 )
+
+[node name="Small" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2.7, 0.5 )
+can_sleep = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Small"]
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Small/CollisionShape"]
+mesh = SubResource( 11 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 1 )
+
+[node name="XSmall" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.2, 1 )
+can_sleep = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="XSmall"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="XSmall/CollisionShape"]
+mesh = SubResource( 11 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 1 )

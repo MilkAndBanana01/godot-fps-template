@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/footstep05.ogg-d7b0670620c8495a7bc2e481227879c8.oggstr"
+
+[deps]
+
+source_file="res://Player/SFX/Walking/footstep05.ogg"
+dest_files=[ "res://.import/footstep05.ogg-d7b0670620c8495a7bc2e481227879c8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

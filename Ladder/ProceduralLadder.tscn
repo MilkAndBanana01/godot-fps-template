@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Ladder/LadderProcedural.gd" type="Script" id=1]
+[ext_resource path="res://Ladder/LadderTop.tscn" type="PackedScene" id=2]
+
+[node name="Ladder" type="Spatial"]
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "This ladder works the same as the fence: it instances and loads ladder scenes that is organized depending on how many scenes are already there. There's actually 2 areas that trigger the player to climb mode (which allows them to climb up or down)."
+}
+
+[node name="ladderTop" type="StaticBody" parent="." instance=ExtResource( 2 )]
+__meta__ = {
+"_editor_description_": "The top part of the ladder."
+}

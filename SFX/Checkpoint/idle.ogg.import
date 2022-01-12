@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/idle.ogg-855c8bd5b7fee6c5556cf286f9e78dbc.oggstr"
+
+[deps]
+
+source_file="res://SFX/Checkpoint/idle.ogg"
+dest_files=[ "res://.import/idle.ogg-855c8bd5b7fee6c5556cf286f9e78dbc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
