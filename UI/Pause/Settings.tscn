@@ -1,0 +1,400 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://UI/Pause/Theme/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/Pause/SFX/tick.ogg" type="AudioStream" id=3]
+[ext_resource path="res://UI/Pause/Settings.gd" type="Script" id=4]
+[ext_resource path="res://UI/Pause/SFX/select.ogg" type="AudioStream" id=5]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0431373, 0.0431373, 0.0431373, 0.862745 )
+corner_radius_top_left = 34
+corner_radius_top_right = 34
+corner_radius_bottom_right = 34
+corner_radius_bottom_left = 34
+
+[node name="Settings" type="Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -213.0
+margin_top = 38.0
+margin_right = 269.0
+margin_bottom = 49.0
+rect_scale = Vector2( 0.880781, 0.880781 )
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "These are the normal setting panel, which always show up whether dev mode is turned on or off."
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 22.0
+margin_top = 24.0
+margin_right = 447.0
+margin_bottom = 645.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="master" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 425.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Label3" type="Label" parent="VBoxContainer/master"]
+margin_top = 1.0
+margin_right = 210.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "MASTER: "
+align = 1
+
+[node name="mastervol" type="HSlider" parent="VBoxContainer/master"]
+margin_left = 214.0
+margin_right = 425.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+min_value = -10.0
+max_value = 10.0
+
+[node name="tick" type="AudioStreamPlayer" parent="VBoxContainer/master"]
+stream = ExtResource( 3 )
+volume_db = -15.0
+
+[node name="sfx" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 36.0
+margin_right = 425.0
+margin_bottom = 61.0
+alignment = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/sfx"]
+margin_top = 1.0
+margin_right = 210.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "sfx: "
+align = 1
+uppercase = true
+
+[node name="sfxvol" type="HSlider" parent="VBoxContainer/sfx"]
+margin_left = 214.0
+margin_right = 425.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+min_value = -10.0
+max_value = 10.0
+ticks_on_borders = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="tick" type="AudioStreamPlayer" parent="VBoxContainer/sfx"]
+stream = ExtResource( 3 )
+volume_db = -15.0
+
+[node name="music" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 72.0
+margin_right = 425.0
+margin_bottom = 97.0
+alignment = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/music"]
+margin_top = 1.0
+margin_right = 210.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "music: "
+align = 1
+uppercase = true
+
+[node name="musicvol" type="HSlider" parent="VBoxContainer/music"]
+margin_left = 214.0
+margin_right = 425.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+min_value = -10.0
+max_value = 10.0
+ticks_on_borders = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="tick" type="AudioStreamPlayer" parent="VBoxContainer/music"]
+stream = ExtResource( 3 )
+volume_db = -15.0
+
+[node name="fullscreen" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 108.0
+margin_right = 425.0
+margin_bottom = 149.0
+alignment = 1
+
+[node name="fullscreen" type="CheckBox" parent="VBoxContainer/fullscreen"]
+margin_right = 425.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+text = "FULLSCREEN"
+align = 1
+
+[node name="fov" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 160.0
+margin_right = 425.0
+margin_bottom = 201.0
+alignment = 1
+
+[node name="fovToggle" type="CheckBox" parent="VBoxContainer/fov"]
+margin_right = 425.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+pressed = true
+text = "FOV"
+align = 1
+
+[node name="bobbing" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 212.0
+margin_right = 425.0
+margin_bottom = 253.0
+alignment = 1
+
+[node name="bobbingToggle" type="CheckBox" parent="VBoxContainer/bobbing"]
+margin_right = 425.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+pressed = true
+text = "BOBBING"
+align = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+margin_top = 264.0
+margin_right = 425.0
+margin_bottom = 313.0
+text = "
+KEYBINDINGS:"
+align = 1
+
+[node name="up" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 324.0
+margin_right = 425.0
+margin_bottom = 359.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/up"]
+margin_top = 6.0
+margin_right = 210.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+text = "FORWARD"
+align = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/up"]
+margin_left = 214.0
+margin_right = 425.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+text = "W"
+
+[node name="left" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 370.0
+margin_right = 425.0
+margin_bottom = 405.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/left"]
+margin_top = 6.0
+margin_right = 210.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+text = "DOWN"
+align = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/left"]
+margin_left = 214.0
+margin_right = 425.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+text = "A"
+
+[node name="down" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 416.0
+margin_right = 425.0
+margin_bottom = 451.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/down"]
+margin_top = 6.0
+margin_right = 210.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+text = "BACK"
+align = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/down"]
+margin_left = 214.0
+margin_right = 425.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+text = "S"
+
+[node name="right" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 462.0
+margin_right = 425.0
+margin_bottom = 497.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/right"]
+margin_top = 6.0
+margin_right = 210.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+text = "RIGHT"
+align = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/right"]
+margin_left = 214.0
+margin_right = 425.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+text = "D"
+
+[node name="jump" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 508.0
+margin_right = 425.0
+margin_bottom = 543.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/jump"]
+margin_top = 6.0
+margin_right = 210.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+text = "jump"
+align = 1
+uppercase = true
+
+[node name="Button" type="Button" parent="VBoxContainer/jump"]
+margin_left = 214.0
+margin_right = 425.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+text = "SPACE"
+
+[node name="crouch" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 554.0
+margin_right = 425.0
+margin_bottom = 589.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/crouch"]
+margin_top = 6.0
+margin_right = 210.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+text = "crouch"
+align = 1
+uppercase = true
+
+[node name="Button" type="Button" parent="VBoxContainer/crouch"]
+margin_left = 214.0
+margin_right = 425.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+text = "CONTROL"
+
+[node name="sprint" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 600.0
+margin_right = 425.0
+margin_bottom = 635.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/sprint"]
+margin_top = 6.0
+margin_right = 210.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+text = "sprint"
+align = 1
+uppercase = true
+
+[node name="Button" type="Button" parent="VBoxContainer/sprint"]
+margin_left = 214.0
+margin_right = 425.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+text = "SHIFT"
+
+[node name="interact" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 646.0
+margin_right = 425.0
+margin_bottom = 681.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/interact"]
+margin_top = 6.0
+margin_right = 210.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+text = "interact"
+align = 1
+uppercase = true
+
+[node name="Button" type="Button" parent="VBoxContainer/interact"]
+margin_left = 214.0
+margin_right = 425.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+text = "E"
+
+[node name="keybindMessage" type="Panel" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -323.5
+margin_top = -51.5
+margin_right = 323.5
+margin_bottom = 51.5
+rect_pivot_offset = Vector2( -457, 36 )
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "A  message that shows the next key is going to be key binded."
+}
+
+[node name="Label3" type="Label" parent="keybindMessage"]
+margin_left = 7.0
+margin_top = 39.0
+margin_right = 640.0
+margin_bottom = 75.0
+text = "PRESS KEY TO BIND."
+align = 1
+
+[node name="SelectAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -10.0
+
+[connection signal="value_changed" from="VBoxContainer/master/mastervol" to="." method="mastervol"]
+[connection signal="value_changed" from="VBoxContainer/sfx/sfxvol" to="." method="sfxvol"]
+[connection signal="value_changed" from="VBoxContainer/music/musicvol" to="." method="musicvol"]
+[connection signal="pressed" from="VBoxContainer/fullscreen/fullscreen" to="." method="fullscreen"]
+[connection signal="pressed" from="VBoxContainer/fov/fovToggle" to="." method="fovToggle"]
+[connection signal="pressed" from="VBoxContainer/bobbing/bobbingToggle" to="." method="bobbingToggle"]
+[connection signal="pressed" from="VBoxContainer/up/Button" to="." method="up"]
+[connection signal="pressed" from="VBoxContainer/left/Button" to="." method="left"]
+[connection signal="pressed" from="VBoxContainer/down/Button" to="." method="down"]
+[connection signal="pressed" from="VBoxContainer/right/Button" to="." method="right"]
+[connection signal="pressed" from="VBoxContainer/jump/Button" to="." method="jump"]
+[connection signal="pressed" from="VBoxContainer/crouch/Button" to="." method="crouch"]
+[connection signal="pressed" from="VBoxContainer/sprint/Button" to="." method="sprint"]
+[connection signal="pressed" from="VBoxContainer/interact/Button" to="." method="interact"]

@@ -1,0 +1,111 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/Pause/Theme/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/Pause/Credits.gd" type="Script" id=5]
+[ext_resource path="res://UI/Pause/SFX/select.ogg" type="AudioStream" id=6]
+
+[node name="Credits" type="VBoxContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -317.5
+margin_top = -366.5
+margin_right = 317.5
+margin_bottom = 366.5
+theme = ExtResource( 1 )
+alignment = 1
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "Special thanks to these lovely people for maing godot accesible and easy to learn <3"
+}
+
+[node name="Label2" type="Label" parent="."]
+anchor_top = -0.0109141
+anchor_bottom = -0.0109141
+margin_top = 30.0
+margin_right = 635.0
+margin_bottom = 183.0
+text = "thank you to these people helping 
+me in the process of creating this resource:
+michael, rossenx, gilbert almazan, blazar1,
+spectermk, ualac, exerionius, Vini Fyolk, Pirate Chip
+Games, and all the godot
+discord helpers!!!!"
+align = 1
+uppercase = true
+
+[node name="KENNEY" type="Button" parent="."]
+margin_top = 194.0
+margin_right = 635.0
+margin_bottom = 229.0
+text = "KENNEY - ASSETS"
+
+[node name="KEVIN" type="Button" parent="."]
+margin_top = 240.0
+margin_right = 635.0
+margin_bottom = 275.0
+text = "KEVIN MACLEOD - BG MUSIC"
+
+[node name="GARBAJ" type="Button" parent="."]
+margin_top = 286.0
+margin_right = 635.0
+margin_bottom = 321.0
+text = "GARBAJ - TUTORIALS"
+
+[node name="ARCANE" type="Button" parent="."]
+margin_top = 332.0
+margin_right = 635.0
+margin_bottom = 367.0
+text = "ARCANE ENERGY - TUTORIALS"
+
+[node name="GDQUEST" type="Button" parent="."]
+margin_top = 378.0
+margin_right = 635.0
+margin_bottom = 413.0
+text = "GDQUEST - TUTORIALS"
+
+[node name="GODOT_DISCORD" type="Button" parent="."]
+margin_top = 424.0
+margin_right = 635.0
+margin_bottom = 459.0
+text = "GODOT - DISCORD"
+
+[node name="GODOT_REDDIT" type="Button" parent="."]
+margin_top = 470.0
+margin_right = 635.0
+margin_bottom = 505.0
+text = "GODOT - REDDIT"
+
+[node name="Label3" type="Label" parent="."]
+margin_top = 516.0
+margin_right = 635.0
+margin_bottom = 565.0
+text = "
+WANT TO SEE THE DEVELOPMENT OF THIS RESOURCE?"
+align = 1
+
+[node name="YT" type="Button" parent="."]
+margin_top = 576.0
+margin_right = 635.0
+margin_bottom = 611.0
+text = "YOUTUBE"
+
+[node name="INSTA" type="Button" parent="."]
+margin_top = 622.0
+margin_right = 635.0
+margin_bottom = 657.0
+text = "INSTAGRAM"
+
+[node name="TWITTER" type="Button" parent="."]
+margin_top = 668.0
+margin_right = 635.0
+margin_bottom = 703.0
+text = "TWITTER"
+
+[node name="SelectAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+
+[connection signal="tree_entered" from="." to="." method="_on_Credits_tree_entered"]

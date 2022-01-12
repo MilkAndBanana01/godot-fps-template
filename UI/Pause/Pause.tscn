@@ -1,0 +1,810 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://UI/Pause/Pause.gd" type="Script" id=1]
+[ext_resource path="res://UI/Pause/Theme/Theme.tres" type="Theme" id=2]
+[ext_resource path="res://UI/Pause/SFX/pause.ogg" type="AudioStream" id=6]
+[ext_resource path="res://UI/Pause/SFX/select.ogg" type="AudioStream" id=7]
+[ext_resource path="res://UI/Pause/SFX/death.ogg" type="AudioStream" id=8]
+[ext_resource path="res://UI/Pause/Settings.tscn" type="PackedScene" id=11]
+[ext_resource path="res://SFX/background music.ogg" type="AudioStream" id=12]
+[ext_resource path="res://UI/Pause/Credits.tscn" type="PackedScene" id=13]
+
+[sub_resource type="Animation" id=2]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0239434, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "death screen"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.000513495, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0431373, 0.0431373, 0.0431373, 0.862745 )
+corner_radius_top_left = 34
+corner_radius_top_right = 34
+corner_radius_bottom_right = 34
+corner_radius_bottom_left = 34
+
+[node name="CanvasLayer" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="Death" type="ColorRect" parent="."]
+margin_left = -40.0
+margin_top = -19.0
+margin_right = 1303.0
+margin_bottom = 744.0
+color = Color( 1, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Death"]
+playback_speed = 2.0
+anims/death = SubResource( 2 )
+"anims/death screen" = SubResource( 3 )
+
+[node name="Pause" type="ColorRect" parent="."]
+margin_left = -8.0
+margin_top = -5.0
+margin_right = 1297.0
+margin_bottom = 730.0
+color = Color( 0, 0, 0, 0.682353 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "A dark overlay for visual clarity."
+}
+
+[node name="Pause" type="VBoxContainer" parent="Pause"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -152.5
+margin_top = -267.5
+margin_right = 143.5
+margin_bottom = 262.5
+theme = ExtResource( 2 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "These are the pause screen options."
+}
+
+[node name="Continue" type="Button" parent="Pause/Pause"]
+margin_top = 155.0
+margin_right = 296.0
+margin_bottom = 190.0
+text = "CONTINUE"
+
+[node name="Retry" type="Button" parent="Pause/Pause"]
+margin_top = 201.0
+margin_right = 296.0
+margin_bottom = 236.0
+text = "RETRY"
+
+[node name="Settings" type="Button" parent="Pause/Pause"]
+margin_top = 247.0
+margin_right = 296.0
+margin_bottom = 282.0
+text = "SETTINGS"
+
+[node name="Credits" type="Button" parent="Pause/Pause"]
+margin_top = 293.0
+margin_right = 296.0
+margin_bottom = 328.0
+text = "CREDITS"
+
+[node name="Quit" type="Button" parent="Pause/Pause"]
+margin_top = 339.0
+margin_right = 296.0
+margin_bottom = 374.0
+text = "QUIT"
+
+[node name="DeathScreen" type="VBoxContainer" parent="Pause"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -152.5
+margin_top = -267.5
+margin_right = 143.5
+margin_bottom = 262.5
+theme = ExtResource( 2 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "The options shown when the player dies."
+}
+
+[node name="Label" type="Label" parent="Pause/DeathScreen"]
+margin_top = 230.0
+margin_right = 296.0
+margin_bottom = 253.0
+text = "YOU DIED!"
+align = 1
+
+[node name="Restart" type="Button" parent="Pause/DeathScreen"]
+margin_top = 264.0
+margin_right = 296.0
+margin_bottom = 299.0
+text = "rESTART"
+
+[node name="Credits" parent="Pause" instance=ExtResource( 13 )]
+visible = false
+margin_left = -289.0
+margin_top = -324.5
+margin_right = 289.0
+margin_bottom = 324.5
+
+[node name="Dev Mode Settings" type="Panel" parent="Pause"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -25.5
+margin_top = 66.0
+margin_right = 550.5
+margin_bottom = -79.0
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "These are the settings that show when Dev Mode in the player is turned on."
+}
+
+[node name="DevMode" type="ScrollContainer" parent="Pause/Dev Mode Settings"]
+margin_left = 38.0
+margin_top = 26.0
+margin_right = 551.0
+margin_bottom = 564.0
+scroll_horizontal_enabled = false
+scroll_vertical = 100
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "The dev tools are on a scrollable window."
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause/Dev Mode Settings/DevMode"]
+margin_right = 513.0
+margin_bottom = 985.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="ARCADE" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_right = 513.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+
+[node name="arcade" type="CheckBox" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/ARCADE"]
+margin_right = 513.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+text = "ARCADE STYLE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SPRINT" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 52.0
+margin_right = 513.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+
+[node name="sprint" type="CheckBox" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/SPRINT"]
+margin_right = 513.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+pressed = true
+text = "SPRINT METER"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="regen" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 104.0
+margin_right = 513.0
+margin_bottom = 133.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/regen"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "STAMINA REGEN"
+
+[node name="regen" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/regen"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "1"
+placeholder_alpha = 0.311
+
+[node name="drain" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 144.0
+margin_right = 513.0
+margin_bottom = 173.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/drain"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "STAMINA DRAIN"
+
+[node name="drain" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/drain"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "1"
+placeholder_alpha = 0.311
+
+[node name="DEATH" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 184.0
+margin_right = 513.0
+margin_bottom = 225.0
+size_flags_horizontal = 3
+
+[node name="death" type="CheckBox" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/DEATH"]
+margin_right = 513.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+pressed = true
+text = "DEATH SCREEN"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="jumpheight" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 236.0
+margin_right = 513.0
+margin_bottom = 265.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/jumpheight"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "JUMP HEIGHT"
+
+[node name="jump" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/jumpheight"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "20"
+placeholder_alpha = 0.311
+
+[node name="maxjumps" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 276.0
+margin_right = 513.0
+margin_bottom = 305.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/maxjumps"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "MAX # OF JUMPS"
+uppercase = true
+
+[node name="maxjumps" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/maxjumps"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "1"
+placeholder_alpha = 0.311
+
+[node name="sensivity" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 316.0
+margin_right = 513.0
+margin_bottom = 345.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/sensivity"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "SENSITIVITY"
+uppercase = true
+
+[node name="sens" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/sensivity"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "1"
+placeholder_alpha = 0.311
+
+[node name="camerasmooth" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 356.0
+margin_right = 513.0
+margin_bottom = 385.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/camerasmooth"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "cam smooth"
+uppercase = true
+
+[node name="camera" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/camerasmooth"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "20"
+placeholder_alpha = 0.311
+
+[node name="gravity" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 396.0
+margin_right = 513.0
+margin_bottom = 425.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/gravity"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "gravity"
+uppercase = true
+
+[node name="grav" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/gravity"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "50"
+placeholder_alpha = 0.311
+
+[node name="grab smooth" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 436.0
+margin_right = 513.0
+margin_bottom = 465.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/grab smooth"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "grab smooth"
+uppercase = true
+
+[node name="grab" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/grab smooth"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "20"
+placeholder_alpha = 0.311
+
+[node name="throw force" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 476.0
+margin_right = 513.0
+margin_bottom = 505.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/throw force"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "throw force"
+uppercase = true
+
+[node name="throw" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/throw force"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "30"
+placeholder_alpha = 0.311
+
+[node name="minfov" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 516.0
+margin_right = 513.0
+margin_bottom = 545.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/minfov"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "min fov"
+uppercase = true
+
+[node name="min" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/minfov"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "70"
+placeholder_alpha = 0.311
+
+[node name="maxfov" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 556.0
+margin_right = 513.0
+margin_bottom = 585.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/maxfov"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "max fov"
+uppercase = true
+
+[node name="max" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/maxfov"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "120"
+placeholder_alpha = 0.311
+
+[node name="fovsmooth" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 596.0
+margin_right = 513.0
+margin_bottom = 625.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/fovsmooth"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "fov smooth"
+uppercase = true
+
+[node name="fovsmooth" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/fovsmooth"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "10"
+placeholder_alpha = 0.311
+
+[node name="scrollforce" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 636.0
+margin_right = 513.0
+margin_bottom = 665.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/scrollforce"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "scroll force"
+uppercase = true
+
+[node name="scroll" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/scrollforce"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "1"
+placeholder_alpha = 0.311
+
+[node name="scrollsmooth" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 676.0
+margin_right = 513.0
+margin_bottom = 705.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/scrollsmooth"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "scroll smooth"
+uppercase = true
+
+[node name="scrollsmooth" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/scrollsmooth"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "0.2"
+placeholder_alpha = 0.311
+
+[node name="scrolllimit" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 716.0
+margin_right = 513.0
+margin_bottom = 745.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/scrolllimit"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "scroll limit"
+uppercase = true
+
+[node name="scrolllimit" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/scrolllimit"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "10"
+placeholder_alpha = 0.311
+
+[node name="speed" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 756.0
+margin_right = 513.0
+margin_bottom = 785.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/speed"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "speed"
+uppercase = true
+
+[node name="speed" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/speed"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "10"
+placeholder_alpha = 0.311
+
+[node name="sprint" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 796.0
+margin_right = 513.0
+margin_bottom = 825.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/sprint"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "sprint speed"
+uppercase = true
+
+[node name="sprint" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/sprint"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "10"
+placeholder_alpha = 0.311
+
+[node name="crouch" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 836.0
+margin_right = 513.0
+margin_bottom = 865.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/crouch"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "crouch speed"
+uppercase = true
+
+[node name="crouch" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/crouch"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "10"
+placeholder_alpha = 0.311
+
+[node name="tiltammount" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 876.0
+margin_right = 513.0
+margin_bottom = 905.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/tiltammount"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "tilt ammount"
+uppercase = true
+
+[node name="tilt" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/tiltammount"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "3"
+placeholder_alpha = 0.311
+
+[node name="tiltspeed" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 916.0
+margin_right = 513.0
+margin_bottom = 945.0
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/tiltspeed"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "tilt speed"
+uppercase = true
+
+[node name="tiltspeed" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/tiltspeed"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "5"
+placeholder_alpha = 0.311
+
+[node name="crouchsmooth" type="HBoxContainer" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer"]
+margin_top = 956.0
+margin_right = 513.0
+margin_bottom = 985.0
+size_flags_horizontal = 3
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label3" type="Label" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/crouchsmooth"]
+margin_top = 3.0
+margin_right = 254.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "crouch smoothing"
+uppercase = true
+
+[node name="crouchsmooth" type="LineEdit" parent="Pause/Dev Mode Settings/DevMode/VBoxContainer/crouchsmooth"]
+margin_left = 258.0
+margin_right = 513.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "20"
+placeholder_alpha = 0.311
+
+[node name="PauseAudio" type="AudioStreamPlayer" parent="Pause"]
+stream = ExtResource( 6 )
+volume_db = -20.0
+
+[node name="SelectAudio" type="AudioStreamPlayer" parent="Pause"]
+stream = ExtResource( 7 )
+volume_db = -10.0
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="Pause"]
+stream = ExtResource( 8 )
+volume_db = -20.0
+
+[node name="keybindMessage" type="Panel" parent="Pause"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -323.5
+margin_top = 316.0
+margin_right = 323.5
+margin_bottom = -316.0
+rect_pivot_offset = Vector2( -457, 36 )
+theme = ExtResource( 2 )
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "A  message that shows the next key is going to be key binded."
+}
+
+[node name="Label3" type="Label" parent="Pause/keybindMessage"]
+margin_left = 7.0
+margin_top = 39.0
+margin_right = 640.0
+margin_bottom = 75.0
+text = "PRESS KEY TO BIND."
+align = 1
+
+[node name="BG" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+autoplay = true
+
+[node name="SettingsPos" type="Node2D" parent="."]
+__meta__ = {
+"_editor_description_": "This is a Node2D that houses the settings panel which moves depending dev mode is turned on or off."
+}
+
+[node name="Settings" parent="SettingsPos" instance=ExtResource( 11 )]
+visible = false
+margin_left = 411.0
+margin_top = 19.0
+margin_right = 893.0
+margin_bottom = 788.0
+
+[connection signal="pressed" from="Pause/Pause/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="Pause/Pause/Retry" to="." method="_on_Retry_pressed"]
+[connection signal="pressed" from="Pause/Pause/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Pause/Pause/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Pause/Pause/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Pause/DeathScreen/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/ARCADE/arcade" to="." method="_on_arcade_pressed"]
+[connection signal="pressed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/SPRINT/sprint" to="." method="_on_sprint_pressed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/regen/regen" to="." method="_on_regen_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/drain/drain" to="." method="_on_drain_text_changed"]
+[connection signal="pressed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/DEATH/death" to="." method="_on_death_pressed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/jumpheight/jump" to="." method="_on_jump_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/maxjumps/maxjumps" to="." method="_on_maxjumps_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/sensivity/sens" to="." method="_on_sens_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/camerasmooth/camera" to="." method="_on_camera_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/gravity/grav" to="." method="_on_grav_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/grab smooth/grab" to="." method="_on_grab_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/throw force/throw" to="." method="_on_throw_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/minfov/min" to="." method="_on_min_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/maxfov/max" to="." method="_on_max_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/fovsmooth/fovsmooth" to="." method="_on_fovsmooth_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/scrollforce/scroll" to="." method="_on_scroll_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/scrollsmooth/scrollsmooth" to="." method="_on_scrollsmooth_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/scrolllimit/scrolllimit" to="." method="_on_scrolllimit_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/speed/speed" to="." method="_on_speed_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/sprint/sprint" to="." method="_on_sprint_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/crouch/crouch" to="." method="_on_crouch_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/tiltammount/tilt" to="." method="_on_tilt_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/tiltspeed/tiltspeed" to="." method="_on_tiltspeed_text_changed"]
+[connection signal="text_changed" from="Pause/Dev Mode Settings/DevMode/VBoxContainer/crouchsmooth/crouchsmooth" to="." method="_on_crouchsmooth_text_changed"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/death.ogg-e4671877a90b140d25beedf3eaced8b1.oggstr"
+
+[deps]
+
+source_file="res://UI/Pause/SFX/death.ogg"
+dest_files=[ "res://.import/death.ogg-e4671877a90b140d25beedf3eaced8b1.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

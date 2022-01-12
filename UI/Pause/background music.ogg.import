@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/background music.ogg-f423176cb1096ff62a1516a1bf058310.oggstr"
+
+[deps]
+
+source_file="res://UI/Pause/background music.ogg"
+dest_files=[ "res://.import/background music.ogg-f423176cb1096ff62a1516a1bf058310.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
