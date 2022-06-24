@@ -598,6 +598,8 @@ func grab():
 # Add that vector to the movement vector of the object to move it to the grabbing position, which
 # is smoothened by GrabSmoothing.
 	objectGrabbed.linear_velocity = vector * GrabSmoothing
+# setting the collision layer to 0 so it would not collide with player
+	objectGrabbed.set_collision_layer(0)
 # The spring arm's length that contains the grabbing position can be adjusted by the scroll wheel
 # and set the length of that spring arm to that scroll value.
 	scroll = lerp(scroll,scrollInput,ScrollSmoothing)
@@ -608,6 +610,8 @@ func release():
 	objectGrabbed.axis_lock_angular_x = false
 	objectGrabbed.axis_lock_angular_y = false
 	objectGrabbed.axis_lock_angular_z = false
+# setting the collision layer to 1 so after releasing the object it would collide with player again
+	objectGrabbed.set_collision_layer(1)
 # Remove the node from being excluded on the player's raycast and set object that is grabbed to
 # none.
 	$Head/Hand.remove_excluded_object(objectGrabbed)
